@@ -1,0 +1,8 @@
+name = "fake-person"
+main = "src/index.js"
+compatibility_date = "2022-06-02"
+account_id = "c0df52b1b550d63cdedaba3d1c67d464"
+
+kv_namespaces = [
+    { binding = "KV", id = "63944752b91e410e9bd8601f4df30d43", preview_id = "ffece8993c214babb6f8bb8a8ac74672" }
+]
