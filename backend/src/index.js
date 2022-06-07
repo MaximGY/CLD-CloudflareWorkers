@@ -5,7 +5,7 @@ export default {
 	async fetch(request, env) {
 		const id = faker.mersenne.rand()
 
-		await env.KV.put(id, JSON.stringify({
+		await env.KV.put(id.toString(), JSON.stringify({
 			name: faker.name.findName(),
 			age: faker.mersenne.rand(100, 1)
 		}));
