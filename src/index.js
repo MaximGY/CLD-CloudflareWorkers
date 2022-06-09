@@ -1,4 +1,4 @@
-const html = todos => `
+const html = (todos) => `
 <!DOCTYPE html>
 <html>
   <head>
@@ -12,10 +12,10 @@ const html = todos => `
     <div class="w-full h-full flex content-center justify-center mt-8">
       <div class="bg-white shadow-md rounded px-8 pt-6 py-8 mb-4">
         <h1 class="block text-grey-800 text-md font-bold mb-2">Todos</h1>
-        <div class="flex">
+        <form class="flex" onsubmit="return false">
           <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-800 leading-tight focus:outline-none focus:shadow-outline" type="text" name="name" placeholder="A new todo"></input>
           <button class="bg-blue-500 hover:bg-blue-800 text-white font-bold ml-2 py-2 px-4 rounded focus:outline-none focus:shadow-outline" id="create" type="submit">Create</button>
-        </div>
+        </form>
         <div class="mt-4" id="todos"></div>
       </div>
     </div>
@@ -78,49 +78,49 @@ const html = todos => `
     document.querySelector("#create").addEventListener('click', createTodo)
   </script>
 </html>
-`
+`;
 
-const defaultData = { todos: [] }
+const defaultData = { todos: [] };
 
-const setCache = (key, data) => KV_TASKS.put(key, data)
-const getCache = key => KV_TASKS.get(key)
+const setCache = (key, data) => KV_TASKS.put(key, data);
+const getCache = (key) => KV_TASKS.get(key);
 
 async function getTodos(request) {
-  const cacheKey = `data`
-  let data
-  const cache = await getCache(cacheKey)
+  const cacheKey = `data`;
+  let data;
+  const cache = await getCache(cacheKey);
   if (!cache) {
-    await setCache(cacheKey, JSON.stringify(defaultData))
-    data = defaultData
+    await setCache(cacheKey, JSON.stringify(defaultData));
+    data = defaultData;
   } else {
-    data = JSON.parse(cache)
+    data = JSON.parse(cache);
   }
-  const body = html(JSON.stringify(data.todos || []).replace(/</g, "\\u003c"))
+  const body = html(JSON.stringify(data.todos || []).replace(/</g, "\\u003c"));
   return new Response(body, {
-    headers: { 'Content-Type': 'text/html' },
-  })
+    headers: { "Content-Type": "text/html" },
+  });
 }
 
 async function updateTodos(request) {
-  const body = await request.text()
-  const cacheKey = `data`
+  const body = await request.text();
+  const cacheKey = `data`;
   try {
-    JSON.parse(body)
-    await setCache(cacheKey, body)
-    return new Response(body, { status: 200 })
+    JSON.parse(body);
+    await setCache(cacheKey, body);
+    return new Response(body, { status: 200 });
   } catch (err) {
-    return new Response(err, { status: 500 })
+    return new Response(err, { status: 500 });
   }
 }
 
 async function handleRequest(request) {
-  if (request.method === 'PUT') {
-    return updateTodos(request)
+  if (request.method === "PUT") {
+    return updateTodos(request);
   } else {
-    return getTodos(request)
+    return getTodos(request);
   }
 }
 
-addEventListener('fetch', event => {
-  event.respondWith(handleRequest(event.request))
-})
+addEventListener("fetch", (event) => {
+  event.respondWith(handleRequest(event.request));
+});
