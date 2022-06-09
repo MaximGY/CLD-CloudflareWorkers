@@ -1,12 +1,13 @@
 name = "todolist"
 main = "src/index.js"
+compatibility_date = "2022-06-09"
 
 # Put your account ID here. 
 # Can be found on the Cloudflare dashboard OR using 'wrangler whoami' when connected.
 account_id = "c0df52b1b550d63cdedaba3d1c67d464" 
 
 kv_namespaces = [
-	# Replace your KV IDs here.
+	# Put your KV IDs here.
 	# You need to create them, either on the dashboard or using 'wrangler kv:namespace create <name>'.
 	{ binding = "KV_TASKS", id = "81561d1a0ea643ae912726c4bccd1655", preview_id = "eba93761e7fc44278c4a14193507f0f3" }
 ]
