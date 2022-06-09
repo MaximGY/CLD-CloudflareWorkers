@@ -24,35 +24,35 @@ const html = (todos) => `
   <script>
     window.todos = ${todos}
 
-    var updateTodos = function() {
+    const updateTodos = function() {
       fetch("/", { method: 'PUT', body: JSON.stringify({ todos: window.todos }) })
       populateTodos()
     }
 
-    var completeTodo = function(evt) {
-      var checkbox = evt.target
-      var todoElement = checkbox.parentNode
-      var newTodoSet = [].concat(window.todos)
-      var todo = newTodoSet.find(t => t.id == todoElement.dataset.todo)
+    const completeTodo = function(evt) {
+      const checkbox = evt.target
+      const todoElement = checkbox.parentNode
+      const newTodoSet = [].concat(window.todos)
+      const todo = newTodoSet.find(t => t.id == todoElement.dataset.todo)
       todo.completed = !todo.completed
       window.todos = newTodoSet
       updateTodos()
     }
 
-    var populateTodos = function() {
-      var todoContainer = document.querySelector("#todos")
+    const populateTodos = function() {
+      const todoContainer = document.querySelector("#todos")
       todoContainer.innerHTML = null
 
       window.todos.forEach(todo => {
-        var el = document.createElement("div")
+        const el = document.createElement("div")
         el.className = "border-t py-4"
         el.dataset.todo = todo.id
 
-        var name = document.createElement("span")
+        const name = document.createElement("span")
         name.className = todo.completed ? "line-through" : ""
         name.textContent = todo.name
 
-        var checkbox = document.createElement("input")
+        const checkbox = document.createElement("input")
         checkbox.className = "mx-4"
         checkbox.type = "checkbox"
         checkbox.checked = todo.completed ? 1 : 0
@@ -66,8 +66,8 @@ const html = (todos) => `
 
     populateTodos()
 
-    var createTodo = function() {
-      var input = document.querySelector("input[name=name]")
+    const createTodo = function() {
+      const input = document.querySelector("input[name=name]")
       if (input.value.length) {
         window.todos = [].concat(todos, { id: window.todos.length + 1, name: input.value, completed: false })
         input.value = ""

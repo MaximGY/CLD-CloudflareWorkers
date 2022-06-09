@@ -1,12 +1,12 @@
 {
-  "name": "backend",
+  "name": "cld-cloudflare-worker-todo-app",
   "version": "1.0.0",
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "test": "wrangler dev"
+    "start": "wrangler dev"
   },
-  "author": "",
+  "author": "Maxim Golay",
   "license": "ISC",
   "volta": {
     "node": "16.15.1"
