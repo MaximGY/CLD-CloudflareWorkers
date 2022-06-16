@@ -7,6 +7,8 @@ Un exemple de l'application en ligne peut être trouvé [ici](https://todolist.m
 
 Les tâches sont communes à tous les utilisateurs.
 
+Vous pouvez revoir [la présentation de l'installation du projet sur YouTube](https://www.youtube.com/watch?v=5sl86vNPVd4).
+
 ## Installation
 
 ### Pré-requis
@@ -16,12 +18,17 @@ Les tâches sont communes à tous les utilisateurs.
 Pour installer l'utilitaire Cloudflare sur votre machine, il suffit de lancer la commande suivante:
 
 ```
-npm i -g wrangler
+npm install -g wrangler
+```
+
+Il faut ensuite vous connecter à votre compte Cloudflare en utilisant
+```
+wrangler login
 ```
 
 ### Déploiement
 
-Pour déployer l'application, il vous suffit d'entrer vos identifiants Cloudflare dans le fichier `wrangler.toml`, comme expliqué dans celui-ci.
+Pour déployer l'application, il vous suffit d'entrer vos identifiants Cloudflare dans le fichier `wrangler.toml`, comme expliqué dans celui-ci et dans la vidéo.
 
 Par la suite, vous pouvez déployer l'app via les commandes suivantes:
 
